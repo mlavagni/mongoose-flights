@@ -1,11 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-let flightSchema = new Schema({
-    airlane: String,
+ let flightSchema = new Schema({
+    airlane: {
+        type: String,
+        enum: ['SW', 'AM', 'UA']
+    },
     flightNo: Number,
-    departs: Date,
-})
+    departs: Date
+ })
 
 
 module.exports = mongoose.model('Flight', flightSchema)

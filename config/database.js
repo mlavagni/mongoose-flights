@@ -1,7 +1,8 @@
-var mongoose = require ('mongoose')
+var mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/flights',
-{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true}
+mongoose.connect(
+    'mongodb://localhost/flights',
+    {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 )
 
 var db = mongoose.connection

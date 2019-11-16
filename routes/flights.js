@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const flightsCtrl = require('../controllers/fights')
+var express = require('express');
+var router = express.Router();
+var flightsCtrl = require('../controllers/flights')
 
 /* GET flights/new */
 router.get('/new', flightsCtrl.new) 
-res.send('respond with a resource');
+router.post('/', flightsCtrl.create)
 
 
 module.exports = router;
