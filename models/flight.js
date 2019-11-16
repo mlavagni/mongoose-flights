@@ -6,8 +6,22 @@ const Schema = mongoose.Schema
         type: String,
         enum: ['SW', 'AM', 'UA']
     },
-    flightNo: Number,
-    departs: Date
+    flightNo: {
+       type: Number,
+       required: true,
+       min: 10,
+       max: 9999 
+    },
+    departs: {
+        type: Date,
+        // default: function(){
+        //     return new Date().getFullYear();
+        // },
+        default: function(){
+           // return new Date().now + (365*24*60*60000);
+           return new Date().getDate() + 365
+        },
+    }
  })
 
 
