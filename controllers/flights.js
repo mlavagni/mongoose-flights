@@ -3,7 +3,15 @@ const Flight = require('../models/flight')
 
 module.exports = {
   new: newFlight,
-  create
+  create,
+  index
+}
+
+
+function index(req, res) {
+    Flight.find({}, function(err, flights){
+    res.render('flights/index', {flights}) 
+  })
 }
 
 function create(req, res) {
@@ -11,9 +19,15 @@ function create(req, res) {
     // remove whitespace next to commas
     // req.body.cast = req.body.cast.replace(/\s*,\s*/g, ',');
     // split if it's not an empty string
-    console.log("entro al create" + Flight(req.body))
-   var flight = new Flight(req.body);
-   console.log(flight + "under new Flight") 
+
+    for(let key in req.body){
+      if (req.body[key]=== '') {
+        delete req.body[key];
+      }
+  }
+
+   var flight = new Flight(req.body)   
+    
    flight.save(function(err) {
       // one way to handle errors
 

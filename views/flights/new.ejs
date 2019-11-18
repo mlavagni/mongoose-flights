@@ -1,8 +1,14 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>New Flight</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<link rel="icon" href="/images/tab-logo.png">
 <html>
   
     <body>
-     
+        <h1>USA International Airport</h1>
     <h2>Enter a New Flight</h2>
     <form action="/flights" method="POST">
       <label>Airlane:
@@ -11,11 +17,15 @@
           <option value="AM">American</option>
           <option value="UN">United</option>
         </select>
-      </label><br>
+      </label><br><br>
       <label>Flight No:
         <input type="text" name="flightNo"></input>
-      </label><br>
+      </label><br><br>
+      <label>Departs:
+      <input type="datetime-local" name="departs"></input>
+      </label><br><br>
       <input type="submit" name="Add Flight"></input>
+    
     </form>
    
   </body>

@@ -14,13 +14,7 @@ const Schema = mongoose.Schema
     },
     departs: {
         type: Date,
-        // default: function(){
-        //     return new Date().getFullYear();
-        // },
-        default: function(){
-           // return new Date().now + (365*24*60*60000);
-           return new Date().getDate() + 365
-        },
+        default:  Date.now() + (365*24*60*60000)
     }
  })
 
