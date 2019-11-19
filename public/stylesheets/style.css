@@ -1,4 +1,6 @@
 body {
+  background: url(/images/background2.png);
+  background-size: cover;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
@@ -13,4 +15,23 @@ h1{
 }
 h2{
   font-size: 1.5rem;
+}
+
+nav > a {
+  margin: 20px;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav > a:not(.active):hover {
+  color: white;
+  background-color: #424748;
+}
+
+nav > a.active {
+  color: white;
+}
+table{
+  margin: 0 auto;
 }
