@@ -1,0 +1,83 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div class="table">
+    <table class="table table-striped">
+      <thead>
+        <th>Airlane Name</th>
+        <th>Flight No</th>
+        <th>Departs Date</th>
+        <th>Depart Time</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= flight.airlane %></td>
+          <td><%= flight.flightNo %></td>
+          <td>
+            <!-- <input type="datetime-local" name="departs" value= <%= flight.departs %> > </input>  -->
+            <%= flight.departs.toDateString() %>
+          </td>
+          <td>
+            <%= flight.departs.toLocaleTimeString() %>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <% if (flight.destinations.length) { %>
+  <h5>Destinations</h5>
+  <div class="newFlight">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Airport</th>
+          <th>Arrival Date</th>
+          <th>Arrival Time</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.destinations.forEach(function(d) { %>
+        <tr>
+          <td><%= d.airport %></td>
+          <td><%= d.arrival.toDateString() %></td>
+          <td><%= d.arrival.toLocaleTimeString() %></td>
+
+        </tr>
+        <% }); %>
+
+      </tbody>
+    </table>
+  </div>
+  <% } else { %>
+  <h5>No destination Yet</h5>
+  <% } %>
+
+</section>
+<!-- new markup below -->
+<br><br>
+<h2>Destination</h2>
+<form class="newFlight" id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+  <label>Destination:
+    <select name="airport">
+      <option value="AUS">AUS</option>
+      <option value="DAL">DAL</option>
+      <option value="LAX">LAX</option>
+      <option value="SAN">SAN</option>
+      <option value="SEA">SEA</option>
+    </select>
+
+  </label>
+  <label>Arrival:
+    <input type="datetime-local" name="arrival"></input>
+  </label>
+
+
+  <input type="submit" value="Add Destination">
+</form>
+
+
+
+
+<%- include('../partials/footer') %>

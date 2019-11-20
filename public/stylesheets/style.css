@@ -1,6 +1,12 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+
 body {
-  background: url(/images/background2.png);
+  background: url(/images/background3.png);
   background-size: cover;
+  background-color: #009FD2;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   text-align: center;
@@ -12,11 +18,22 @@ a {
 }
 h1{
   font-size: 2.5rem;
+  margin-bottom: 15px;
 }
-h2{
+h2, h5{
+  
   font-size: 1.5rem;
+  text-align: center;
 }
+nav{
+  margin: 20px auto;
+  text-align: center;
+  width: 65%;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #1e629e;
 
+}
 nav > a {
   margin: 20px;
   text-decoration: none;
@@ -32,6 +49,11 @@ nav > a:not(.active):hover {
 nav > a.active {
   color: white;
 }
-table{
+div .table{
+  width: 65%;
   margin: 0 auto;
+}
+
+.newFlight {
+  text-align: center;
 }
