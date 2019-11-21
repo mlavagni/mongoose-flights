@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-let destinationSchema = new Schema({
+let ticketSchema = new Schema({
     seat:{
         type: String,
         match: /[A-F][1-9]\d?/
@@ -21,4 +21,4 @@ let destinationSchema = new Schema({
 
 
 
-    module.exports = mongoose.model('Performer', performerSchema);
+    module.exports = mongoose.model('Ticket', ticketSchema);

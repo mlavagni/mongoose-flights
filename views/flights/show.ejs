@@ -8,6 +8,7 @@
         <th>Flight No</th>
         <th>Departs Date</th>
         <th>Depart Time</th>
+        <th>Ticket</th>
       </thead>
       <tbody>
         <tr>
@@ -20,6 +21,13 @@
           <td>
             <%= flight.departs.toLocaleTimeString() %>
           </td>
+          <td>
+              <form class="newTicket" id="add-ticket" method="GET" action="/flights/<%= flight._id %>/tickets">
+             <!-- <form> -->
+                <input type="hidden" name="<%= flight._id %>">
+                <input type="submit" value="Add Ticket"></a>
+            </form>
+            </td>
         </tr>
 
       </tbody>
