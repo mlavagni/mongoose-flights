@@ -85,6 +85,46 @@
   <input type="submit" value="Add Destination">
 </form>
 
+<br><br>
+<h2>Tickets</h2>
+<form class="newTicket" id="add-ticket-form" method="POST" action="/flights/<%= flight._id %>/tickets">
+  <label>Seat No:
+      <input type="text" name="seat"></input>
+    </label><br><br>
+    <label>Price:
+      <input type="text" name="price"></input>
+    </label><br><br>
+    
+  <input type="submit" value="Add Ticket">
+  <% console.log(tickets) %>
+  <% if (tickets.length) { %>
+    <h5>Tickets</h5>
+    <div class="newFlight">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Airport</th>
+            <th>Arrival Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tickets.forEach(function(t) { %>
+          <tr>
+            <td><%= t.seat %></td>
+            <td><%= t.price %></td>
+  
+          </tr>
+          <% }); %>
+  
+        </tbody>
+      </table>
+    </div>
+    <% } else { %>
+    <h5>No tickets Yet</h5>
+    <% } %>
+</form>
+
+
 
 
 

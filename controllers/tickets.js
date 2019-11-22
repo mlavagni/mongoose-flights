@@ -7,13 +7,26 @@ module.exports = {
   };
 
   function createFlightTicket(req, res) {
-    Flight.findById(req.params.id, function(err, flight) {
-        req.body.flight.push(flight)
-        Ticket.create(req.body, function(err, ticket) {
-        ticket.save(function(err) {
-        res.redirect(`/flights/${flight._id}`)
-        })
-     })
+    console.log('entro al create ticket')
+    let newTicket = {
+      flight :  req.params.id,
+      seat : req.body.seat,
+      price : req.body.price
+    }
+    
+    Ticket.create(newTicket, function(err, ticket) {
+      
+      if (err) res.send(err)
+      console.log('req.params.id')
+      console.log(req.body)
+      res.redirect(`/flights/${req.params.id}`)
+
+    // Flight.findById(req.params.id, function(err, flight) {
+    //     req.body.flight = flight
+      
+    //     Ticket.create(req.body, function(err, ticket) {
+    //     ticket.save(function(err) {
+    //     res.redirect(`/flights/${flight._id}`)
   })
 }
 
@@ -36,3 +49,4 @@ module.exports = {
       });
     //})
   }
+
