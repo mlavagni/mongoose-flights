@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <div class="table">
+  <div class="table-flights">
     <table class="table table-striped">
       <thead>
         <th>Airlane Name</th>
@@ -33,38 +33,43 @@
       </tbody>
     </table>
   </div>
-  <% if (flight.destinations.length) { %>
-  <h5>Destinations</h5>
-  <div class="newFlight">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Airport</th>
-          <th>Arrival Date</th>
-          <th>Arrival Time</th>
 
-        </tr>
-      </thead>
-      <tbody>
-        <% flight.destinations.forEach(function(d) { %>
-        <tr>
-          <td><%= d.airport %></td>
-          <td><%= d.arrival.toDateString() %></td>
-          <td><%= d.arrival.toLocaleTimeString() %></td>
-
-        </tr>
-        <% }); %>
-
-      </tbody>
-    </table>
-  </div>
-  <% } else { %>
-  <h5>No destination Yet</h5>
-  <% } %>
 
 </section>
 <!-- new markup below -->
 <br><br>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+          <% if (flight.destinations.length) { %>
+            <h5>Destinations</h5>
+            <div class="table-tick-des">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Airport</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Time</th>
+          
+                  </tr>
+                </thead>
+                <tbody>
+                  <% flight.destinations.forEach(function(d) { %>
+                  <tr>
+                    <td><%= d.airport %></td>
+                    <td><%= d.arrival.toDateString() %></td>
+                    <td><%= d.arrival.toLocaleTimeString() %></td>
+          
+                  </tr>
+                  <% }); %>
+          
+                </tbody>
+              </table>
+            </div>
+            <% } else { %>
+            <h5>No destination Yet</h5>
+            <% } %>
 <h2>Destination</h2>
 <form class="newFlight" id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
   <label>Destination:
@@ -86,9 +91,12 @@
 </form>
 
 <br><br>
-<h2>Tickets</h2>
+</div>
+<div class="col">
+
+<!-- <h2>Tickets</h2> -->
 <form class="newTicket" id="add-ticket-form" method="POST" action="/flights/<%= flight._id %>/tickets">
-  <label>Seat No:
+  <!-- <label>Seat No:
       <input type="text" name="seat"></input>
     </label><br><br>
     <label>Price:
@@ -100,7 +108,7 @@
   <% if (tickets.length) { %>
     <h5>Tickets</h5>
     <div class="newFlight">
-      <table class="table table-striped">
+      <table class="table-ticket table table-striped">
         <thead>
           <tr>
             <th>Airport</th>
@@ -121,7 +129,34 @@
     </div>
     <% } else { %>
     <h5>No tickets Yet</h5>
-    <% } %>
+    <% } %> -->
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Tickets</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <% if (tickets.length) { %>
+             
+            <% tickets.forEach(function(t) { %>
+              <li class="list-group-item">Seat: <%= t.seat %> Price: <%= t.price %></li>
+            <% }); %>
+          <% }%>
+        </ul>
+        <div class="card-body">
+            <label>Seat No:
+                <input type="text" name="seat"></input>
+              </label><br><br>
+              <label>Price: $
+                <input type="text" name="price"></input>
+              </label><br><br>
+              
+            <input type="submit" value="Add Ticket">
+        </div>
+        </div>
+
+      </div>
+    </div>
+ 
 </form>
 
 

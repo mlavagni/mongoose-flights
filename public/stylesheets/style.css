@@ -49,9 +49,13 @@ nav > a:not(.active):hover {
 nav > a.active {
   color: white;
 }
-div .table{
+.table-flights{
   width: 65%;
   margin: 0 auto;
+}
+
+.table-tick-des{
+  width: 75%;
 }
 
 .newFlight {
