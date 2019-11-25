@@ -61,3 +61,15 @@ nav > a.active {
 .newFlight {
   text-align: center;
 }
+
+.col{
+  text-align: -webkit-center;
+  width: 65%;
+  margin-left: 130px;
+}
+
+.row{
+  width: 80%;
+  text-align: -webkit-center;
+ 
+}
