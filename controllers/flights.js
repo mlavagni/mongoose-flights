@@ -12,8 +12,6 @@ module.exports = {
 function show(req, res) {
   Flight.findById(req.params.id, function(err, flight) {
     Ticket.find({flight: flight._id}, function(err, tickets){
-     console.log("all tickets")
-      console.log(tickets)
       res.render('flights/show', { title: 'Flight Detail', flight ,tickets});
     })
     
@@ -27,11 +25,6 @@ function index(req, res) {
 }
 
 function create(req, res) {
-   
-    // remove whitespace next to commas
-    // req.body.cast = req.body.cast.replace(/\s*,\s*/g, ',');
-    // split if it's not an empty string
-
     for(let key in req.body){
       if (req.body[key]=== '') {
         delete req.body[key];
@@ -42,9 +35,7 @@ function create(req, res) {
     
    flight.save(function(err) {
       // one way to handle errors
-
       if (err) return res.render('flights/new', { title: 'Add Flight' });
-      
       // for now, redirect right back to new.ejs
       res.redirect('flights');
     });

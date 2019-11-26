@@ -90,11 +90,7 @@
 <br><br>
 </div>
 
-
-
 <!-- Tickets -->
-<form class="newTicket" id="add-ticket-form" method="POST" action="/flights/<%= flight._id %>/tickets">
-
     <div class="card" style="width: 14rem;">
         <div class="card-body">
           <h5 class="card-title">Tickets</h5>
@@ -103,10 +99,17 @@
             <% if (tickets.length) { %>
              
             <% tickets.forEach(function(t) { %>
-              <li class="list-group-item">Seat: <%= t.seat %> Price: <%= t.price %></li>
+              <li class="list-group-item">
+                Seat: <%= t.seat %> Price: <%= t.price %>
+              
+              <form action="/tickets/<%= t._id %>?_method=DELETE" method="POST" id="deleteTicket">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+              </li>
             <% }); %>
           <% }%>
         </ul>
+        <form class="newTicket" id="add-ticket-form" method="POST" action="/flights/<%= flight._id %>/tickets">
         <div class="card-body">
             <label>Seat No:
                 <input type="text" name="seat"></input>
@@ -116,6 +119,7 @@
               </label><br><br>
               
             <input type="submit" value="Add Ticket">
+          
         </div>
        
         </div>
